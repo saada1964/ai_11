@@ -1,0 +1,83 @@
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Authentication & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
+python-multipart==0.0.6
+email-validator==2.1.0
+
+# WebSocket Support
+websockets==12.0
+starlette==0.27.0
+
+# Self-Correction and Quality Assurance
+numpy
+scikit-learn  # For similarity calculations and quality metrics
+tqdm  # For progress tracking
+
+# Dynamic Memory and Vector Search
+sentence-transformers  # For better embeddings
+faiss-cpu  # For efficient vector search (optional)
+openai  # For embedding generation
+
+# Hierarchical Tools and Sub-Agents
+networkx  # For dependency graphs and agent coordination
+psutil  # For system monitoring
+prometheus-client  # For metrics collection (optional)
+
+# Interactive UI Components
+plotly  # For interactive charts and graphs
+folium  # For interactive maps (alternative to maps)
+jinja2  # For template rendering
+pandas  # For data manipulation and table creation
+matplotlib  # For basic charting (fallback)
+seaborn  # For statistical visualizations
+
+# Database
+sqlalchemy[asyncio]
+asyncpg
+psycopg2-binary
+alembic
+
+# Vector Database
+pgvector
+
+# AI Models & Clients
+openai
+anthropic
+groq
+
+# Data Processing
+pydantic
+pydantic-settings
+
+# Background Tasks
+celery[redis]
+redis
+
+# HTTP Clients
+httpx
+requests
+
+# File Processing
+python-magic
+PyPDF2
+python-docx
+
+# Web Tools
+#serperpy==1.5.0
+google-search-results
+wikipedia
+numexpr
+
+# Utilities
+python-dotenv
+structlog
+
+# Development
+pytest
+pytest-asyncio
+pytest-httpx

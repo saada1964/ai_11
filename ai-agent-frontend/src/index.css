@@ -1,0 +1,436 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* RTL Support */
+  .rtl {
+    direction: rtl;
+  }
+  
+  .ltr {
+    direction: ltr;
+  }
+
+  /* Arabic Font Support */
+  .font-arabic {
+    font-family: 'Segoe UI', 'Cairo', 'Amiri', 'Tajawal', 'Noto Sans Arabic', 'Arial', sans-serif;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground));
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--foreground));
+  }
+
+  /* Message bubble styles */
+  .message-bubble {
+    @apply max-w-[70%] rounded-lg px-4 py-2 text-sm;
+  }
+
+  .message-bubble.user {
+    @apply bg-primary text-primary-foreground ml-4;
+  }
+
+  .message-bubble.assistant {
+    @apply bg-muted text-foreground mr-4;
+  }
+
+  /* Chat input styles */
+  .chat-input {
+    @apply flex-1 resize-none rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Loading animation */
+  .loading-dots {
+    @apply inline-flex space-x-1;
+  }
+
+  .loading-dots > div {
+    @apply w-2 h-2 bg-current rounded-full animate-pulse;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  /* Typing indicator */
+  .typing-indicator {
+    @apply flex items-center space-x-1;
+  }
+
+  .typing-indicator > div {
+    @apply w-2 h-2 bg-muted-foreground rounded-full animate-bounce;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-lg border border-white/10;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  /* Status indicators */
+  .status-online {
+    @apply w-3 h-3 bg-green-500 rounded-full animate-pulse;
+  }
+
+  .status-offline {
+    @apply w-3 h-3 bg-gray-400 rounded-full;
+  }
+
+  .status-busy {
+    @apply w-3 h-3 bg-red-500 rounded-full animate-pulse;
+  }
+
+  /* Theme specific styles */
+  [data-color-scheme="blue"] {
+    --primary: 221.2 83.2% 53.3%;
+  }
+
+  [data-color-scheme="green"] {
+    --primary: 142.1 76.2% 36.3%;
+  }
+
+  [data-color-scheme="purple"] {
+    --primary: 262.1 83.3% 57.8%;
+  }
+
+  [data-color-scheme="orange"] {
+    --primary: 25.1 95% 53.1%;
+  }
+
+  [data-color-scheme="pink"] {
+    --primary: 328.7 76.8% 60.0%;
+  }
+
+  /* Font size variants */
+  [data-font-size="small"] {
+    font-size: 0.875rem;
+  }
+
+  [data-font-size="medium"] {
+    font-size: 1rem;
+  }
+
+  [data-font-size="large"] {
+    font-size: 1.125rem;
+  }
+
+  /* Animation speed variants */
+  [data-animation-speed="slow"] {
+    --animation-duration: 400ms;
+  }
+
+  [data-animation-speed="normal"] {
+    --animation-duration: 200ms;
+  }
+
+  [data-animation-speed="fast"] {
+    --animation-duration: 100ms;
+  }
+
+  /* Compact mode */
+  .compact {
+    --spacing-unit: 0.5rem;
+  }
+
+  .compact .space-y-4 > * + * {
+    margin-top: calc(var(--spacing-unit) * 2);
+  }
+
+  .compact .space-x-4 > * + * {
+    margin-left: calc(var(--spacing-unit) * 2);
+  }
+
+  /* Mobile responsive utilities */
+  @media (max-width: 768px) {
+    .mobile-full {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+    }
+
+    .mobile-text-sm {
+      font-size: 0.875rem;
+    }
+
+    .mobile-p-4 {
+      padding: 1rem;
+    }
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break {
+    page-break-after: always;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .border {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode specific adjustments */
+.dark {
+  color-scheme: dark;
+}
+
+.dark img {
+  opacity: 0.9;
+}
+
+/* Selection styles */
+::selection {
+  background-color: hsl(var(--primary) / 0.2);
+}
+
+::-moz-selection {
+  background-color: hsl(var(--primary) / 0.2);
+}
+
+/* Focus visible for better accessibility */
+.focus-visible {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+/* Loading skeleton styles */
+.skeleton {
+  @apply animate-pulse bg-muted rounded;
+}
+
+.skeleton-text {
+  @apply h-4 bg-muted rounded;
+}
+
+.skeleton-avatar {
+  @apply h-10 w-10 bg-muted rounded-full;
+}
+
+/* Custom checkbox and radio styles */
+.custom-checkbox {
+  @apply appearance-none w-4 h-4 border border-input rounded checked:bg-primary checked:border-primary focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.custom-radio {
+  @apply appearance-none w-4 h-4 border border-input rounded-full checked:bg-primary checked:border-primary focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Tooltip styles */
+.tooltip {
+  @apply absolute z-50 px-2 py-1 text-xs text-background bg-foreground rounded shadow-lg opacity-0 pointer-events-none transition-opacity duration-200;
+}
+
+.tooltip.show {
+  @apply opacity-100;
+}
+
+/* Progress bar styles */
+.progress-bar {
+  @apply w-full bg-muted rounded-full h-2;
+}
+
+.progress-fill {
+  @apply bg-primary h-2 rounded-full transition-all duration-300 ease-out;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+.badge-default {
+  @apply bg-primary text-primary-foreground;
+}
+
+.badge-secondary {
+  @apply bg-secondary text-secondary-foreground;
+}
+
+.badge-outline {
+  @apply border border-input bg-background text-foreground;
+}
+
+/* Code block styles */
+code {
+  @apply rounded bg-muted px-1.5 py-0.5 text-sm font-mono;
+}
+
+pre {
+  @apply overflow-x-auto rounded-lg bg-muted p-4 text-sm;
+}
+
+pre code {
+  @apply bg-transparent p-0;
+}
